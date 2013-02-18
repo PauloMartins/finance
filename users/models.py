@@ -5,3 +5,6 @@ class User(models.Model):
 	last_name = models.CharField(max_length=200)
 	email = models.CharField(max_length=300)
 	password = models.CharField(max_length=200)
+
+	class Meta:
+		db_table = "user"

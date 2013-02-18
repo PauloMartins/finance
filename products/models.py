@@ -12,3 +12,6 @@ class Item(models.Model):
 	value = models.FloatField()
 	type = models.ForeignKey(Type)
 	user = models.ManyToManyField(User)
+
+	class Meta:
+		db_table = "product"
