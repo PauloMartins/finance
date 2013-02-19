@@ -1,6 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'master_pages/main.html' %}
 
 {% block body %}
+<a href="/type">Voltar</a><br/>
 <form action="" method="post">
 	{% csrf_token %}
 	{{ form.as_p }}

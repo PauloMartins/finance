@@ -1,7 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'master_pages/main.html' %}
 
 {% block body %}
-
 {% if form.errors %}
 	{{ form.non_field_errors }}
 {% endif %}
@@ -25,5 +24,4 @@
 	</table>
 	<input type="hidden" name="next" value="{{ next }}">
 </form>
-
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'master_pages/main.html' %}
+
+{% block body %}
+<a href="/type">Tipos</a><br/>
+<a href="/product/new">Adicionar Despesa</a><br/>
+<a href="/logout">Sair</a><br/>
+<ul>
+	{% for item in items %}
+	<li>
+		{{ item.name }} : {{ item.type.name }} : {{ item.value }} 
+		<a href="/product/{{ item.id }}">Edit</a> || 
+		<a href="/product/delete/{{ item.id }}">Del</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}

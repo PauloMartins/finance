@@ -1,0 +1,15 @@
+{% extends 'master_pages/main.html' %}
+
+{% block body %}
+<a href="/">Home</a><br/>
+<a href="/type/new">Adicionar</a><br/>
+<ul>
+	{% for item in items %}
+	<li>
+		{{ item.name }} 
+		<a href="/type/{{ item.id }}">Edit</a> || 
+		<a href="/type/delete/{{ item.id }}">Del</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}

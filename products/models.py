@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 class Type(models.Model):
 	name = models.CharField(max_length=200)
+	user = models.ForeignKey(User)
 
 	class Meta:
 		db_table = "product_type"
@@ -17,7 +18,7 @@ class Product(models.Model):
 	value = models.FloatField()
 	obs = models.CharField(max_length=200, blank=True)
 	type = models.ForeignKey(Type)
-	user = models.ManyToManyField(User, related_name='users_item')
+	user = models.ForeignKey(User)
 
 	class Meta:
 		db_table = "product"
