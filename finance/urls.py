@@ -8,6 +8,8 @@ from django.conf import settings
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'products.views.index'),
+    url(r'^product/new/$', 'products.views.new'),
+    url(r'^type/new/$', 'products.views.new_type'),
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', {'login_url': '/login/'}),
     # url(r'^finance/', include('finance.foo.urls')),

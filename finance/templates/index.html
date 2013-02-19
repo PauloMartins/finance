@@ -1,10 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Finance</title>
-</head>
-<body>
-	
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block body %}
+<a href="/type/new">Novo tipo de conta</a><br/>
+<a href="/product/new">Adicionar nova conta</a>
+<ul>
+	{% for item in items %}
+	<li>{{ item.name }} : {{ item.type.name }} : {{ item.value }}</li>
+	{% endfor %}
+</ul>
+{% endblock %}
