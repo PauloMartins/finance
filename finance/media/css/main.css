@@ -1,0 +1,8 @@
+ul.list li {
+	margin: 10px 0;
+}
+
+ul.list li a {
+	text-align: left;
+	padding: 10px 20px;
+}

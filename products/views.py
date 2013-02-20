@@ -10,7 +10,7 @@ from forms import FormProduct, FormProductType
 @login_required
 def product(request):
 	items = Product.objects.filter(user=request.user)
-	return render_to_response('product.html', {'items': items})
+	return render_to_response('product.html', {'items': items, 'menu': 'product', 'user': request.user})
 
 @login_required
 def product_item(request, id):
@@ -41,7 +41,7 @@ def product_new(request):
 	else:
 		form = FormProduct()
 
-	return render_to_response('product.html', {'form': form}, context_instance=RequestContext(request))
+	return render_to_response('product_item.html', {'form': form}, context_instance=RequestContext(request))
 
 @login_required
 def product_delete(request, id):
@@ -51,7 +51,7 @@ def product_delete(request, id):
 @login_required
 def type(request):
 	items = Type.objects.filter(user=request.user)
-	return render_to_response('type.html', {'items': items})
+	return render_to_response('type.html', {'items': items, 'menu': 'type'})
 
 @login_required
 def type_item(request, id):

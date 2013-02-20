@@ -1,15 +1,25 @@
 {% extends 'master_pages/main.html' %}
 
 {% block body %}
-<a href="/">Home</a><br/>
-<a href="/type/new">Adicionar</a><br/>
-<ul>
-	{% for item in items %}
-	<li>
-		{{ item.name }} 
-		<a href="/type/{{ item.id }}">Edit</a> || 
-		<a href="/type/delete/{{ item.id }}">Del</a>
-	</li>
-	{% endfor %}
-</ul>
+<div class="row">
+	<div class="span12 clearfix">
+		<a href="#" class="btn btn-info pull-right"><i class="icon-plus icon-white"></i> Adicionar</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span12">
+		<ul class="unstyled list">		
+		{% for item in items %}
+			<li>
+				<a href="#" class="btn btn-block clearfix">
+					{{ item.name }}
+				</a>
+			</li>
+		{% endfor %}
+		</ul>
+		<!-- <a href="/product/{{ item.id }}" class="btn"><i class="icon-edit"></i></a>
+		<a href="/product/delete/{{ item.id }}" class="btn btn-danger"><i class="icon-trash icon-white"></i></a> -->
+	</div>
+</div>
 {% endblock %}
