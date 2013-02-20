@@ -3,7 +3,7 @@
 {% block body %}
 <div class="row">
 	<div class="span12 clearfix">
-		<a href="#" class="btn btn-info pull-right"><i class="icon-plus icon-white"></i> Adicionar</a>
+		<a href="/type/new" class="btn btn-info pull-right"><i class="icon-plus icon-white"></i> Adicionar</a>
 	</div>
 </div>
 
@@ -12,7 +12,7 @@
 		<ul class="unstyled list">		
 		{% for item in items %}
 			<li>
-				<a href="#" class="btn btn-block clearfix">
+				<a href="#" class="btn btn-block clearfix" data-original-title="" data-content="<a href='/type/{{ item.id }}' class='btn' title='Editar'><i class='icon-pencil'></i></a> <a href='/type/delete/{{ item.id }}' class='btn btn-danger' title='Deletar'><i class='icon-remove icon-white'></i></a>" data-html="true" data-placement="bottom" data-toggle="popover">
 					{{ item.name }}
 				</a>
 			</li>

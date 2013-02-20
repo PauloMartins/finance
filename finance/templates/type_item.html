@@ -1,10 +1,13 @@
 {% extends 'master_pages/main.html' %}
 
 {% block body %}
-<a href="/type">Voltar</a><br/>
+<div class="page-header">
+	<h1>{% if edit %}Editar{% else %}Novo{% endif %} Tipo</h1>
+</div>
+
 <form action="" method="post">
 	{% csrf_token %}
 	{{ form.as_p }}
-	<button type="submit">Adicionar</button>
+	<button class="btn" type="submit">Adicionar</button>
 </form>
 {% endblock %}

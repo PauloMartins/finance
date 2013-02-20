@@ -1,3 +1,11 @@
+a { outline: none !important; }
+.hide { display: none !important; }
+span.success { color: green; }
+
+.login {
+	margin-top: 10%;
+}
+
 ul.list li {
 	margin: 10px 0;
 }

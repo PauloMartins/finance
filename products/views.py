@@ -2,9 +2,11 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.utils import simplejson
+from datetime import date
 
-from models import Product, Type
+from models import Product, Type, ProductLog
 from forms import FormProduct, FormProductType
 
 @login_required
@@ -26,7 +28,7 @@ def product_item(request, id):
 	else:
 		form = FormProduct(instance=item)
 
-	return render_to_response('product_item.html', {'form': form}, context_instance=RequestContext(request))
+	return render_to_response('product_item.html', {'form': form, 'menu': 'product', 'edit': True}, context_instance=RequestContext(request))
 
 @login_required
 def product_new(request):
@@ -41,7 +43,7 @@ def product_new(request):
 	else:
 		form = FormProduct()
 
-	return render_to_response('product_item.html', {'form': form}, context_instance=RequestContext(request))
+	return render_to_response('product_item.html', {'form': form, 'menu': 'product'}, context_instance=RequestContext(request))
 
 @login_required
 def product_delete(request, id):
@@ -49,9 +51,27 @@ def product_delete(request, id):
 	return HttpResponseRedirect('/')
 
 @login_required
+def product_status(request, id, status):
+	product = Product.objects.get(pk=id)
+
+	if status == '1':
+		status = True
+	else:
+		status = False
+
+	product.status = status
+	product.save()
+
+	if status == True:
+		log = ProductLog(product_id=product.id, value=product.value, date=date.today())
+		log.save();
+
+	return HttpResponse(simplejson.dumps({'status': True}), mimetype="application/json")
+
+@login_required
 def type(request):
 	items = Type.objects.filter(user=request.user)
-	return render_to_response('type.html', {'items': items, 'menu': 'type'})
+	return render_to_response('type.html', {'items': items, 'menu': 'type', 'user': request.user})
 
 @login_required
 def type_item(request, id):
@@ -67,7 +87,7 @@ def type_item(request, id):
 	else:
 		form = FormProductType(instance=item)
 
-	return render_to_response('type_item.html', {'form': form}, context_instance=RequestContext(request))
+	return render_to_response('type_item.html', {'form': form, 'menu': 'type', 'edit': True}, context_instance=RequestContext(request))
 
 @login_required
 def type_new(request):
@@ -82,7 +102,7 @@ def type_new(request):
 	else:
 		form = FormProductType()
 
-	return render_to_response('type_item.html', {'form': form}, context_instance=RequestContext(request))
+	return render_to_response('type_item.html', {'form': form, 'menu': 'type'}, context_instance=RequestContext(request))
 
 @login_required
 def type_delete(request, id):

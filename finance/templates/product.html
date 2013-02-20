@@ -3,7 +3,7 @@
 {% block body %}
 <div class="row">
 	<div class="span12 clearfix">
-		<a href="#" class="btn btn-info pull-right"><i class="icon-plus icon-white"></i> Adicionar</a>
+		<a href="/product/new" class="btn btn-info pull-right"><i class="icon-plus icon-white"></i> Adicionar</a>
 	</div>
 </div>
 
@@ -12,12 +12,12 @@
 		<ul class="unstyled list">		
 		{% for item in items %}
 			<li>
-				<a href="#" class="btn btn-block clearfix">
-					<span class="pull-left">
+				<a href="#" class="btn btn-block clearfix" data-original-title="" data-content="<a href='#' class='btn {% if item.status == 1 %}btn-success disabled{% else %}btn-info{% endif %}' rel='status' data-status='1' data-product-id='{{ item.id }}'><i class='icon-ok icon-white'></i></a> <a href='/product/{{ item.id }}' class='btn' title='Editar'><i class='icon-pencil'></i></a> <a href='/product/delete/{{ item.id }}' class='btn btn-danger' title='Deletar'><i class='icon-remove icon-white'></i></a>" data-html="true" data-placement="bottom" data-toggle="popover">
+					<span class="pull-left {% if item.status == 1 %}success{% endif %}">
 						[ {{ item.type.name }} ] {{ item.name }}
 					</span>
 					<span class="pull-right">
-						R$ {{ item.value }}
+						{{ item.number_formated }}
 					</span>
 				</a>
 			</li>
