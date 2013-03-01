@@ -24,7 +24,7 @@ ul.list li a span.item {
 	margin-bottom: 3px;
 }
 
-ul.list li a span.ar {
+ul.list li a span.value {
 	border: 1px solid #ededed;
 	padding: 2px 10px;
 	background-color: #fff;
@@ -32,5 +32,4 @@ ul.list li a span.ar {
 
 ul.list li a span strong {
 	display: inline-block;
-	margin-left: 20px;
 }

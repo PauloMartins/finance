@@ -16,8 +16,8 @@
 					<span class="item {% if item.status == 1 %}success{% endif %}">
 						{{ item.name }}
 					</span>
-					<span class="ar">
-						<i>[ {{ item.type.name }} ]</i> <strong class="{% if item.status == 1 %}success{% endif %}">{{ item.number_formated }}</strong>
+					<span class="value clearfix">
+						<i class="pull-left">[ {{ item.type.name }} ]</i> <strong class="pull-right {% if item.status == 1 %}success{% endif %}">{{ item.number_formated }}</strong>
 					</span>
 				</a>
 			</li>
