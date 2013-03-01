@@ -21,10 +21,10 @@ class FormProduct(forms.ModelForm):
 
 	class Meta:
 		model = Product
-		fields = {'name', 'date', 'end_date', 'value', 'type'}
+		fields = ['name', 'date', 'end_date', 'value', 'type']
 
 class FormProductType(forms.ModelForm):
 
 	class Meta:
 		model = Type
-		fields = {'name'}
+		fields = ['name']
