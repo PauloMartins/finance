@@ -1,6 +1,6 @@
 (function(){
 
-	$("a[data-toggle=popover]").popover().click(function(e) {
+	$("a[data-toggle=popover]").popover().bind('click', function(e) {
 		e.preventDefault()
 		$item = $(this)
 		
@@ -13,7 +13,8 @@
 				function( response ) {
 					if ( response.status ) {
 						$this.removeClass('btn-info').addClass('btn-success disabled');
-						$item.find('span.pull-left').addClass('success');
+						$item.find('span.item').addClass('success');
+						$item.find('strong').addClass('success');
 					}
 				}
 			);

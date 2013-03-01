@@ -13,11 +13,11 @@
 		{% for item in items %}
 			<li>
 				<a href="#" class="btn btn-block clearfix" data-original-title="" data-content="<a href='#' class='btn {% if item.status == 1 %}btn-success disabled{% else %}btn-info{% endif %}' rel='status' data-status='1' data-product-id='{{ item.id }}'><i class='icon-ok icon-white'></i></a> <a href='/product/{{ item.id }}' class='btn' title='Editar'><i class='icon-pencil'></i></a> <a href='/product/delete/{{ item.id }}' class='btn btn-danger' title='Deletar'><i class='icon-remove icon-white'></i></a>" data-html="true" data-placement="bottom" data-toggle="popover">
-					<span class="pull-left {% if item.status == 1 %}success{% endif %}">
-						[ {{ item.type.name }} ] {{ item.name }}
+					<span class="item {% if item.status == 1 %}success{% endif %}">
+						{{ item.name }}
 					</span>
-					<span class="pull-right">
-						{{ item.number_formated }}
+					<span class="ar">
+						<i>[ {{ item.type.name }} ]</i> <strong class="{% if item.status == 1 %}success{% endif %}">{{ item.number_formated }}</strong>
 					</span>
 				</a>
 			</li>

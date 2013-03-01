@@ -1,6 +1,7 @@
 a { outline: none !important; }
 .hide { display: none !important; }
-span.success { color: green; }
+strong.success, span.success { color: green; }
+.ar { text-align: right; }
 
 .login {
 	margin-top: 10%;
@@ -13,4 +14,17 @@ ul.list li {
 ul.list li a {
 	text-align: left;
 	padding: 10px 20px;
+}
+
+ul.list li a span {
+	display: block;
+}
+
+ul.list li a span.item {
+	margin-top: 3px;
+}
+
+ul.list li a span strong {
+	display: inline-block;
+	margin-left: 20px;
 }

@@ -1,5 +1,6 @@
 # Django settings for finance project.
 import os
+import socket
 
 ROOTDIR = os.path.realpath(os.path.dirname(__file__))
 
@@ -7,7 +8,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Paulo Martins', 'phmartins6@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -157,3 +158,15 @@ LOGGING = {
         },
     }
 }
+
+if socket.gethostname() == 'todd':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'finance',                      # Or path to database file if using sqlite3.
+            'USER': 'root',                      # Not used with sqlite3.
+            'PASSWORD': '',                  # Not used with sqlite3.
+            'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        }
+    }
