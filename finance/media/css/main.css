@@ -22,8 +22,12 @@ ul.list li a span {
 
 ul.list li a span.item {
 	margin-bottom: 3px;
+}
+
+ul.list li a span.ar {
 	border: 1px solid #ededed;
 	padding: 2px 10px;
+	background-color: #fff;
 }
 
 ul.list li a span strong {
