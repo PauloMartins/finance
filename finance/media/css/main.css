@@ -30,6 +30,11 @@ ul.list li a span.value {
 	background-color: #fff;
 }
 
+ul.list li a span.value i {
+	font-style: normal;
+	color: #666666;
+}
+
 ul.list li a span strong {
 	display: inline-block;
 }
