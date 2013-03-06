@@ -1,6 +1,6 @@
 (function(){
 
-	$("a[data-toggle=popover]").popover().bind('click', function(e) {
+	$("a[data-toggle=popover]").popover().bind('tap', function(e) {
 		e.preventDefault();
 		$item = $(this);
 		
