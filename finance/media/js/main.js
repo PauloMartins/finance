@@ -15,8 +15,7 @@
 				function( response ) {
 					if ( response.status ) {
 						$this.removeClass('btn-info').addClass('btn-success disabled');
-						$item.find('span.item').addClass('success');
-						$item.find('strong').addClass('success');
+						$item.addClass('btn-success');
 					}
 				}
 			);
