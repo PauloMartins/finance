@@ -12,19 +12,19 @@
 		<ul class="unstyled list">		
 		{% for item in items %}
 			<li>
-				<a href="#" class="btn btn-block clearfix" data-original-title="" data-content="<a href='#' class='btn {% if item.status == 1 %}btn-success disabled{% else %}btn-info{% endif %}' rel='status' data-status='1' data-product-id='{{ item.id }}'><i class='icon-ok icon-white'></i></a> <a href='/product/{{ item.id }}' class='btn' title='Editar'><i class='icon-pencil'></i></a> <a href='/product/delete/{{ item.id }}' class='btn btn-danger' title='Deletar'><i class='icon-remove icon-white'></i></a>" data-html="true" data-placement="bottom" data-toggle="popover">
-					<span class="item {% if item.status == 1 %}success{% endif %}">
-						{{ item.name }}
+				<a href="#" class="btn btn-block clearfix {% if item.status == 1 %}btn-success{% endif %}" data-original-title="" data-content="<a href='#' class='btn {% if item.status == 1 %}btn-success disabled{% else %}btn-info{% endif %}' rel='status' data-status='1' data-product-id='{{ item.id }}'><i class='icon-ok icon-white'></i></a> <a href='/product/{{ item.id }}' class='btn' title='Editar'><i class='icon-pencil'></i></a> <a href='/product/delete/{{ item.id }}' class='btn btn-danger' title='Deletar'><i class='icon-remove icon-white'></i></a>" data-html="true" data-placement="top" data-toggle="popover">
+					<span class="item clearfix">
+						<p class="pull-left">{{ item.name }}</p>
+						<strong class="pull-right {% if item.status == 1 %}success{% endif %}">{{ item.number_formated }}</strong>
 					</span>
-					<span class="value clearfix">
-						<i class="pull-left">[ {{ item.type.name }} ]</i> <strong class="pull-right {% if item.status == 1 %}success{% endif %}">{{ item.number_formated }}</strong>
+					<span class="value clearfix hide">
+						<i class="pull-left">{{ item.type.name }}</i>
+						<i class="pull-right">{{ item.date }}</i>
 					</span>
 				</a>
 			</li>
 		{% endfor %}
 		</ul>
-		<!-- <a href="/product/{{ item.id }}" class="btn"><i class="icon-edit"></i></a>
-		<a href="/product/delete/{{ item.id }}" class="btn btn-danger"><i class="icon-trash icon-white"></i></a> -->
 	</div>
 </div>
 {% endblock %}

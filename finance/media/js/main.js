@@ -1,9 +1,11 @@
 (function(){
 
 	$("a[data-toggle=popover]").popover().bind('click', function(e) {
-		e.preventDefault()
-		$item = $(this)
+		e.preventDefault();
+		$item = $(this);
 		
+		$(this).find('span.value').toggleClass('hide');
+
 		$("a[rel=status]").not('.disabled').bind('click', function(e) {
 			e.preventDefault();
 			$this = $(this);
