@@ -7,6 +7,10 @@ a { outline: none !important; }
 	margin-top: 10%;
 }
 
+ul.list {
+	margin-bottom: 50px;
+}
+
 ul.list li {
 	margin: 10px 0;
 }
