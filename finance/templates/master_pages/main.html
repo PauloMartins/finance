@@ -28,7 +28,7 @@
 						<li {% if menu == 'type' %}class="active"{% endif %}><a href="/type">Tipos</a></li>
 					</ul>
 					<ul class="nav pull-right">
-						<li><a href="#">Logado como: <strong>{{ user.username }}</strong></a></li>
+						<li><a href="#">Bem Vindo, <strong>{{ user.first_name }} {{ user.last_name }}</strong></a></li>
 						<li class="divider-vertical"></li>
 						<li><a href="/logout">Sair</a></li>						
 					</ul>

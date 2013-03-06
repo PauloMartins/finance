@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.formats import number_format
+import datetime
 
 class Type(models.Model):
 	name = models.CharField(max_length=200)
@@ -25,6 +26,9 @@ class Product(models.Model):
 	@property
 	def number_formated(self):
 		return u"R$ %s" % number_format(self.value, 2) 
+
+	def current_month(self):
+		return self.date.date() == datetime.date.today()
 
 	class Meta:
 		db_table = "product"

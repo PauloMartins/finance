@@ -3,7 +3,13 @@
 {% block body %}
 <div class="row">
 	<div class="span12 clearfix">
-		<a href="/product/new" class="btn btn-info pull-right"><i class="icon-plus icon-white"></i> Adicionar</a>
+		<div class="btn-group">
+			<button class="btn disabled" disabled="disabled"><i class="icon-th-list"></i></button>
+			<button class="btn active">Data</button>
+			<button class="btn">Pago</button>
+			<button class="btn">Não pago</button>
+		</div>
+		<a href="/product/new" class="btn btn-info pull-right"><i class="icon-plus icon-white"></i></a>
 	</div>
 </div>
 

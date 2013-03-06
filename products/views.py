@@ -9,9 +9,11 @@ from datetime import date
 from models import Product, Type, ProductLog
 from forms import FormProduct, FormProductType
 
+import datetime
+
 @login_required
 def product(request):
-	items = Product.objects.filter(user=request.user)
+	items = Product.objects.filter(user=request.user).extra(where=['end_date <= %s'], params=[datetime.date(datetime.date.today().year, datetime.date.today().month, 31)]).order_by('date')
 	return render_to_response('product.html', {'items': items, 'menu': 'product', 'user': request.user})
 
 @login_required
