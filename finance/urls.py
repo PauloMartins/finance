@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     # (r'^admin/(.*)', admin.site.root),
+    url(r'^static/(?P<path>.*)$', 'serve'),
 )
 
 if settings.DEBUG:
