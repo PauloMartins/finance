@@ -8,10 +8,11 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Product
     url(r'^$', 'products.views.product'),
-    url(r'^product/(?P<id>\d+)/$', 'products.views.product_item'),
     url(r'^product/new/$', 'products.views.product_new'),
     url(r'^product/delete/(?P<id>\d+)/$', 'products.views.product_delete'),
     url(r'^product/status/(?P<id>\d+)/(?P<status>\d+)/$', 'products.views.product_status'),
+    url(r'^product/(?P<id>\d+)/$', 'products.views.product_item'),
+    url(r'^product/(?P<options>\w+)/$', 'products.views.product'),
     # Product Type
     url(r'^type/$', 'products.views.type'),
     url(r'^type/(?P<id>\d+)/$', 'products.views.type_item'),

@@ -12,9 +12,18 @@ from forms import FormProduct, FormProductType
 import datetime
 
 @login_required
-def product(request):
-	items = Product.objects.filter(user=request.user).extra(where=['end_date <= %s'], params=[datetime.date(datetime.date.today().year, datetime.date.today().month, 31)]).order_by('date')
-	return render_to_response('product.html', {'items': items, 'menu': 'product', 'user': request.user})
+def product(request, options = None):
+	items = Product.objects.filter(user=request.user).order_by('date').extra(where=['YEAR(end_date) = %s AND MONTH(end_date) >= %s'], params=[datetime.date.today().year, datetime.date.today().month])
+
+	if options == 'paid':
+		items = items.filter(productlog__date__month=datetime.date.today().month, productlog__date__year=datetime.date.today().year)
+	elif options == 'nonpaid':
+		items = items.exclude(productlog__date__month=datetime.date.today().month, productlog__date__year=datetime.date.today().year)
+
+	for item in items:
+		item.paid = ProductLog.objects.filter(product_id=item.id, date__month=datetime.date.today().month, date__year=datetime.date.today().year)
+
+	return render_to_response('product.html', {'items': items, 'menu': 'product', 'user': request.user, 'options': options})
 
 @login_required
 def product_item(request, id):
@@ -60,9 +69,6 @@ def product_status(request, id, status):
 		status = True
 	else:
 		status = False
-
-	product.status = status
-	product.save()
 
 	if status == True:
 		log = ProductLog(product_id=product.id, value=product.value, date=date.today())
