@@ -17,9 +17,9 @@ def product(request, options = None):
 	items = Product.objects.filter(user=request.user).order_by('date').extra(where=['(YEAR(end_date) > %s) OR (YEAR(end_date) = %s AND MONTH(end_date) >= %s)'], params=[datetime.date.today().year, datetime.date.today().year, datetime.date.today().month])
 
 	if options == 'paid':
-		items = items.filter(productlog__date__month=datetime.date.today().month, productlog__date__year=datetime.date.today().year)
+		items = items.filter(productlog__date__month=datetime.date.today().month, productlog__date__year=datetime.date.today().year).distinct()
 	elif options == 'nonpaid':
-		items = items.exclude(productlog__date__month=datetime.date.today().month, productlog__date__year=datetime.date.today().year)
+		items = items.exclude(productlog__date__month=datetime.date.today().month, productlog__date__year=datetime.date.today().year).distinct()
 
 	for item in items:
 		item.paid = ProductLog.objects.filter(product_id=item.id, date__month=datetime.date.today().month, date__year=datetime.date.today().year)
