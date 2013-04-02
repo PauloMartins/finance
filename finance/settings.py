@@ -159,7 +159,7 @@ LOGGING = {
     }
 }
 
-if socket.gethostname() == 'todd' or socket.gethostname() == 'MacBook-Pro-de-Paulo.local':
+if socket.gethostname() == 'duffman' or socket.gethostname() == 'MacBook-Pro-de-Paulo.local':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
