@@ -7,10 +7,6 @@ a { outline: none !important; }
 	margin-top: 10%;
 }
 
-ul.list {
-	margin-bottom: 100px;
-}
-
 ul.list li {
 	margin: 10px 0;
 }
@@ -47,4 +43,22 @@ ul.list li a span.value i {
 
 ul.list li a span strong {
 	display: inline-block;
+}
+
+.total {
+	margin-bottom: 40px;
+}
+
+.total p {
+	line-height: 25px;
+	padding: 5px 20px;
+	background-color: #A4C9DD;
+	border: 1px dotted #ccc;
+}
+
+.total p span {
+	font-size: 20px;
+	width: 150px;
+	display: inline-block;
+	font-weight: bold;
 }

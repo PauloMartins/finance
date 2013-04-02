@@ -13,6 +13,7 @@ import datetime
 
 @login_required
 def product(request, options = None):
+	total = 0
 	items = Product.objects.filter(user=request.user).order_by('date').extra(where=['(YEAR(end_date) > %s) OR (YEAR(end_date) = %s AND MONTH(end_date) >= %s)'], params=[datetime.date.today().year, datetime.date.today().year, datetime.date.today().month])
 
 	if options == 'paid':
@@ -22,8 +23,9 @@ def product(request, options = None):
 
 	for item in items:
 		item.paid = ProductLog.objects.filter(product_id=item.id, date__month=datetime.date.today().month, date__year=datetime.date.today().year)
+		total += item.value
 
-	return render_to_response('product.html', {'items': items, 'menu': 'product', 'user': request.user, 'options': options})
+	return render_to_response('product.html', {'items': items, 'menu': 'product', 'user': request.user, 'options': options, 'total': total})
 
 @login_required
 def product_item(request, id):
