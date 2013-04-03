@@ -45,7 +45,7 @@ def product_item(request, id):
 			return HttpResponseRedirect('/')
 
 	else:
-		form = FormProduct(instance=item)
+		form = FormProduct(request.user, instance=item)
 
 	return render_to_response('product_item.html', {'form': form, 'menu': 'product', 'edit': True}, context_instance=RequestContext(request))
 
@@ -60,7 +60,7 @@ def product_new(request):
 			item.save()
 			return HttpResponseRedirect('/')
 	else:
-		form = FormProduct(user=request.user)
+		form = FormProduct(request.user)
 
 	return render_to_response('product_item.html', {'form': form, 'menu': 'product'}, context_instance=RequestContext(request))
 
