@@ -16,6 +16,7 @@
 	<div class="span12">
 		<ul class="unstyled list">		
 		{% for item in items %}
+			{% if options == None or options == 'paid' and item.paid or options == 'nonpaid' and not item.paid %}
 			<li>
 				<a href="#{{ item.id }}" class="btn btn-block clearfix {% if item.paid %}btn-success{% endif %}" data-original-title="" data-content="<a href='#' class='btn {% if item.paid == 1 %}btn-success disabled{% else %}btn-info{% endif %}' rel='status' data-status='1' data-product-id='{{ item.id }}'><i class='icon-ok icon-white'></i></a> <a href='/product/{{ item.id }}' class='btn' title='Editar'><i class='icon-pencil'></i></a> <a href='/product/delete/{{ item.id }}' class='btn btn-danger' title='Deletar'><i class='icon-remove icon-white'></i></a>" data-html="true" data-placement="bottom" data-toggle="popover">
 					<span class="item clearfix">
@@ -28,6 +29,7 @@
 					</span>
 				</a>
 			</li>
+			{% endif %}
 		{% endfor %}
 		</ul>
 		<div class="total">
