@@ -30,6 +30,10 @@ class FormProduct(forms.ModelForm):
 	date = forms.DateField(widget=forms.DateInput(format='%d/%m/%Y'), input_formats=['%d/%m/%y', '%d/%m/%Y'])
 	end_date = forms.DateField(widget=forms.DateInput(format='%d/%m/%Y'), input_formats=['%d/%m/%y', '%d/%m/%Y'])
 
+	def __init__(self, user, *args, **kwargs):
+		super(FormProduct, self).__init__(*args, **kwargs)
+		self.fields['type'].queryset = Type.objects.filter(user = user.id)
+
 	class Meta:
 		model = Product
 		fields = ['type', 'name', 'value', 'date', 'end_date']

@@ -60,7 +60,7 @@ def product_new(request):
 			item.save()
 			return HttpResponseRedirect('/')
 	else:
-		form = FormProduct()
+		form = FormProduct(user=request.user)
 
 	return render_to_response('product_item.html', {'form': form, 'menu': 'product'}, context_instance=RequestContext(request))
 
