@@ -14,7 +14,7 @@ import datetime
 @login_required
 def product(request, options = None):
 	total = 0
-	items = Product.objects.filter(user_id=request.user.id).order_by('date').extra(where=['(YEAR(end_date) > %s) OR (YEAR(end_date) = %s AND MONTH(end_date) >= %s)'], params=[datetime.date.today().year, datetime.date.today().year, datetime.date.today().month])
+	items = Product.objects.extra(where=['user_id = %s AND ((YEAR(end_date) > %s) OR (YEAR(end_date) = %s AND MONTH(end_date) >= %s))'], params=[request.user.id, datetime.date.today().year, datetime.date.today().year, datetime.date.today().month]).order_by('date')
 
 	for item in items:
 		item.paid = ProductLog.objects.filter(product_id=item.id, date__month=datetime.date.today().month, date__year=datetime.date.today().year)
