@@ -35,7 +35,7 @@ def product_item(request, id):
 	item = get_object_or_404(Product, pk=id, user=request.user)
 
 	if request.method == 'POST':
-		form = FormProduct(request.POST, request.FILES, instance=item)
+		form = FormProduct(request.user, request.POST, request.FILES, instance=item)
 
 		if form.is_valid():
 			form.save()
@@ -49,7 +49,7 @@ def product_item(request, id):
 @login_required
 def product_new(request):
 	if request.method == 'POST':
-		form = FormProduct(request.POST)
+		form = FormProduct(request.user, request.POST)
 
 		if form.is_valid():
 			item = form.save(commit=False)
